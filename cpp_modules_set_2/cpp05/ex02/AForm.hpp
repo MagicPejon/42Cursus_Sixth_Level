@@ -6,15 +6,15 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:29:47 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/12 18:40:02 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/08/13 14:58:38 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_H
 # define AFORM_H
 
-#include <exception>
 # include <iostream>
+# include <cstdlib>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat; 

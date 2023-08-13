@@ -6,12 +6,13 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/12 17:04:17 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/13 14:52:59 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:27:29 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
+#include <exception>
 
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("ShrubberyCreationForm", 145, 137), _target("Notarget")
 {
@@ -58,7 +59,7 @@ void ShrubberyCreationForm::writeAsciiTree() const
 {
 	std::ofstream file;
 			
-	file.open(this->_target + "_shrubbery");
+	file.open((this->_target + "_shrubbery").c_str());
 	if (file.fail())
 		throw ShrubberyCreationForm::FileNotOpened();
 	file << " \\\\   //  \\\\   //  \\\\   //  \\\\   //" << std::endl;
@@ -74,8 +75,15 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	{
 		if (executor.getGrade() <= this->getReq_Exe())
 		{
-			this->writeAsciiTree();
-			std::cout << this->_target << "_shrubbery created, give them time to grow" << std::endl;
+			try
+			{
+				this->writeAsciiTree();
+				std::cout << this->_target << "_shrubbery created, give them time to grow" << std::endl;
+			}
+			catch (std::exception & e)
+			{
+				std::cout << (this->_target + "_shrubbery").c_str() << " " << e.what() << std::endl;
+			}
 		}
 		else
 			throw AForm::GradeTooLowException();
