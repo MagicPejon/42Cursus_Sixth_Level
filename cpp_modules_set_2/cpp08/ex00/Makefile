@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/09 15:03:44 by amalbrei          #+#    #+#              #
-#    Updated: 2023/08/17 18:09:40 by amalbrei         ###   ########.fr        #
+#    Created: 2023/08/28 15:33:08 by amalbrei          #+#    #+#              #
+#    Updated: 2023/08/28 15:38:47 by amalbrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = easy
 CXX = c++
 CXXFLAGS = -Werror -Wall -Wextra -std=c++98
 RM = rm -rf
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
+SRC = main.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 %.o: %.cpp
@@ -31,7 +31,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 	
-
 re: fclean all
 
 .PHONY: all clean fclean re

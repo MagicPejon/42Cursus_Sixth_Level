@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConversion.hpp                               :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/17 18:15:19 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/21 17:59:51 by amalbrei         ###   ########.fr       */
+/*   Created: 2023/08/23 12:19:54 by amalbrei          #+#    #+#             */
+/*   Updated: 2023/08/23 12:47:42 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERSION_H
-# define SCALARCONVERSION_H
+#ifndef SERIALIZER_H
+# define SERIALIZER_H
+
 
 # include <iostream>
 # include <string>
-# include <cstddef>
+# include <cstdlib>
+# include <stdint.h>
 
-class ScalarConverter
+struct Data
+{
+	std::string 	data_title;
+	int				number;
+};
+
+class Serializer
 {
 	private:
-	
-		ScalarConverter(void);
-		ScalarConverter(ScalarConverter const & copy);
-		ScalarConverter & operator=(ScalarConverter const & rhs);
+
+		Serializer(void);
+		Serializer(Serializer const & copy);
+		Serializer & operator=(Serializer const & rhs);
 
 	public:
-	
-		~ScalarConverter(void);
-		
-		static void	convert(std::string str);
-		static void	toChar(std::string str);
-		static void	toInt(std::string str);
-		static void	toDouble(std::string str);
-		static void	toFloat(std::string str);
+
+		~Serializer(void);
+		static uintptr_t serialize(Data *ptr);
+		static Data *deserialize(uintptr_t raw);	
 };
 
 #endif

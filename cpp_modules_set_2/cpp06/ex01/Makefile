@@ -5,16 +5,16 @@
 #                                                     +:+ +:+         +:+      #
 #    By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/09 15:03:44 by amalbrei          #+#    #+#              #
-#    Updated: 2023/08/17 18:09:40 by amalbrei         ###   ########.fr        #
+#    Created: 2023/08/17 18:09:07 by amalbrei          #+#    #+#              #
+#    Updated: 2023/08/23 12:41:15 by amalbrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = bureaucrat
+NAME = serial
 CXX = c++
 CXXFLAGS = -Werror -Wall -Wextra -std=c++98
 RM = rm -rf
-SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
+SRC = main.cpp Serializer.cpp
 OBJ = $(SRC:%.cpp=%.o)
 
 %.o: %.cpp
