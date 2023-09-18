@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:34 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/11 18:33:02 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:55:13 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int main(int ac, char **av)
 	{
 		std::cerr << "Invalid number of arguments" << std::endl;
 		std::cerr << "Usage: ./RPN <reverse polish notation equation>" << std::endl;
-		std::cerr << "you may add: " << YELLOW << "ex" << DEFAULT << " at the end for the explanation of the equation";
+		std::cerr << "you may add: " << YELLOW << "ex" << DEFAULT << " at the end for the explanation of the equation" << std::endl;
 		return (1);
 	}
 	return (0);
