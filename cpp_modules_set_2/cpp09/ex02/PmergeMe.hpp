@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:07:35 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/15 18:22:32 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 18:03:22 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include <deque>
 # include <ctype.h>
 # include <time.h>
+# include <deque>
+# include <iterator>
+# include <vector>
+# include <stdlib.h>
 
 # define DEFAULT	"\033[0m"
 # define RED		"\033[1;31m"
