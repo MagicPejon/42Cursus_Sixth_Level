@@ -6,20 +6,22 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:27:30 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/05 21:30:49 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:31:25 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <_types/_intmax_t.h>
 # include <iostream>
 # include <fstream>
 # include <string>
 # include <stdlib.h>
 # include <iomanip>
 # include <map>
+# include <exception>
+# include <sstream>
+# include <string>
 
 # define DEFAULT	"\033[0m"
 # define RED		"\033[1;31m"

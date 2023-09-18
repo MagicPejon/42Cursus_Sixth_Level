@@ -6,14 +6,11 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:27:19 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/05 21:37:43 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:50:53 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <exception>
-#include <sstream>
-#include <string>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -214,7 +211,7 @@ bool BitcoinExchange::validateHeading(std::string line)
 
 void BitcoinExchange::convert(std::string infile)
 {
-	std::ifstream	collect(infile);
+	std::ifstream	collect(infile.c_str());
 
 	if(collect.fail())
 	{
@@ -275,15 +272,19 @@ const char * BitcoinExchange::InvalidFormat::what() const throw()
 
 BitcoinExchange::InvalidNumber::InvalidNumber(int ln, const char * infile)
 {
-	std::string append_n = std::to_string(ln);
+	std::stringstream convert;
+	std::string append_n;
+	convert << ln;
+	convert >> append_n;
 	std::string append_s = infile;
 	append_s = GREEN + append_s + DEFAULT;
 	std::string msg = "Error found in: \"" + append_s \
 	+ "\" file, specifically at line: " + append_n;
 	this->_msg = msg.c_str();
+	std::cout << this->_msg;
 }
 
 const char * BitcoinExchange::InvalidNumber::what() const throw()
 {
-	return (this->_msg);
+	return ("");
 }
