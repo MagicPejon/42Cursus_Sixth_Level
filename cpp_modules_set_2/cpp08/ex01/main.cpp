@@ -6,13 +6,11 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:41:42 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/30 14:15:37 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:16:35 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <atomic>
-#include <exception>
 
 int main()
 {
@@ -34,10 +32,10 @@ int main()
 	{
 		sure.addNumber(10);
 		sure.addNumber(20);
+		sure.addNumber(0);
 		sure.addNumber(30);
 		sure.addNumber(40);
 		sure.addNumber(55);
-		sure.addNumber(80);
 	}
 	catch (std::exception & e)
 	{

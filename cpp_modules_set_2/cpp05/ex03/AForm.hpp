@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:29:47 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/13 14:58:38 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:31:57 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@
 # include <iostream>
 # include <cstdlib>
 # include "Bureaucrat.hpp"
+
+# define DEFAULT	"\033[0m"
+# define RED		"\033[1;31m"
+# define GREEN		"\033[1;32m"
+# define YELLOW		"\033[1;33m"
+# define PURPLE		"\033[0;35m"
+# define CYAN		"\033[1;36m"
 
 class Bureaucrat; 
 class AForm

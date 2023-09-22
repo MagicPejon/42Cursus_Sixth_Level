@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 16:21:09 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/13 20:03:50 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:28:31 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ AForm *Intern::makeForm(std::string name, std::string target)
 		{
 			delete (forms[(i + 1) % 3]);
 			delete (forms[(i + 2) % 3]);
+			std::cout << YELLOW << "Intern creates " << list_of_forms[i] << DEFAULT << std::endl;
 			return (forms[i]);
 		}
 	}

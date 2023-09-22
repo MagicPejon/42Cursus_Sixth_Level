@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:06:45 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/16 14:01:45 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:15:15 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int ac, char **av)
 		std::cerr << "Invalid arguments given:" << std::endl;
 		check_single(av);
 		std::cerr << YELLOW << "Usage: " << DEFAULT << "./PmergeMe <numbers>" << RED << "*" << std::endl;
-		std::cerr << "*" << DEFAULT << "Number of numbers must be between 5 and 3000" << std::endl;
+		std::cerr << "*" << DEFAULT << "Number of numbers must be between 2 and 3000" << std::endl;
 		std::cerr << GREEN << "For example: 5 7 9 10 6 8 ...." << DEFAULT << std::endl;
 		return (1);
 	}

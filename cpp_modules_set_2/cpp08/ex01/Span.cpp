@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:41:35 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/30 14:13:21 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:16:31 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,20 @@ void Span::addNumber(int num)
 	this->_storage.push_back(num);
 }
 
-int Span::longestSpan()
+unsigned int Span::longestSpan()
 {
-	int lspan;
+	unsigned int lspan;
 
 	if (this->_storage.size() < 2)
 		throw Span::InvalidStorageUsed();
 	std::sort(this->_storage.begin(), this->_storage.end());
-	lspan = this->_storage[this->_storage.size() - 1] - this->_storage[0];
+	lspan = abs(abs(this->_storage[this->_storage.size() - 1]) - abs(this->_storage[0]));
 	return (lspan);
 }
 
-int Span::shortestSpan()
+unsigned int Span::shortestSpan()
 {
-	int sspan;
+	unsigned int sspan;
 
 	if (this->_storage.size() < 2)
 		throw Span::InvalidStorageUsed();
@@ -70,7 +70,7 @@ int Span::shortestSpan()
 	sspan = this->_storage[1] - this->_storage[0];
 	for (unsigned int i = 1; i < (this->_storage.size() - 1); i++)
 	{
-		if (this->_storage[i + 1] - this->_storage[i] < sspan)
+		if ((unsigned int)this->_storage[i + 1] - this->_storage[i] < sspan)
 			sspan = this->_storage[i + 1] - this->_storage[i];
 	}
 	return (sspan);

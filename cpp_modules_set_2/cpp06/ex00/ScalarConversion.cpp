@@ -6,15 +6,11 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 18:15:11 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/21 18:19:47 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:27:07 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConversion.hpp"
-#include <_ctype.h>
-#include <exception>
-#include <limits>
-#include <stdexcept>
 
 ScalarConverter::ScalarConverter()
 {

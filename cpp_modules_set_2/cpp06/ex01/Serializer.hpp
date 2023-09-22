@@ -6,13 +6,12 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:19:54 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/23 12:47:42 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:36:58 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SERIALIZER_H
 # define SERIALIZER_H
-
 
 # include <iostream>
 # include <string>

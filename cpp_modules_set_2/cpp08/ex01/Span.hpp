@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 15:41:28 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/29 17:49:34 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:11:39 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <iostream>
 # include <algorithm>
 # include <vector>
-# include <exception>
 # include <ctime>
 
 class Span
@@ -50,10 +49,10 @@ class Span
 		~Span();
 		
 		Span(unsigned int size);
-		void	addNumber(int num);
-		int		longestSpan();
-		int		shortestSpan();
-		void	addNumber_set(int nums);
+		void				addNumber(int num);
+		unsigned int		longestSpan();
+		unsigned int		shortestSpan();
+		void				addNumber_set(int nums);
 	
 };
 

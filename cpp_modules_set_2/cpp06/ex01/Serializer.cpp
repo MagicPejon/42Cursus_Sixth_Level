@@ -6,13 +6,11 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 12:19:36 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/23 12:41:01 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:32:46 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-#include <sys/_types/_uintptr_t.h>
-#include <sys/types.h>
 
 Serializer::Serializer()
 {

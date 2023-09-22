@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 18:15:40 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/28 14:06:39 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:35:20 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int main(void)
 {
-	Data *data;
-	data->data_title = "My paycheck";
-	data->number = 42;
+	Data data;
+	data.data_title = "My paycheck";
+	data.number = 42;
 	
-	uintptr_t serializedValue = Serializer::serialize(data);
+	uintptr_t serializedValue = Serializer::serialize(&data);
 	
 	std::cout << "-----------------------------------------------------------------------------" << std::endl;
 	std::cout << "serializedValue  : " << serializedValue << std::endl;

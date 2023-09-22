@@ -6,11 +6,13 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 17:42:52 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/30 14:24:32 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:22:28 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
+#include <iterator>
+#include <vector>
 
 int main()
 {
@@ -24,6 +26,8 @@ int main()
 	mstack.push(5);
 	mstack.push(737);
 	mstack.push(0);
+	// std::stack<int> lel;
+	// std::stack<int>::iterator nope; no iterator for stack :(
 	MutantStack<int>::iterator it = mstack.begin();
 	MutantStack<int>::iterator ite = mstack.end();
 	++it;

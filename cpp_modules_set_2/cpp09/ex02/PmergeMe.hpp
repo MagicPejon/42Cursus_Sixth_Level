@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:07:35 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/18 18:03:22 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/21 13:27:47 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ class PmergeMe
 		bool				_already_sorted(void);
 		void				_sort_vector(void);
 		void				_sort_deque(void);
-		void				_print_arranged(void);
 		
 		template <typename T>
 		T					_transfer(T &container);
@@ -51,7 +50,8 @@ class PmergeMe
 		void				_rearrange(T &container, T &temp);
 		template <typename T>
 		void				_return(T &container, T &temp);
-		
+		template <typename T>
+		void				_print_arranged(T container, std::string type);
 	public:
 
 		PmergeMe(void);

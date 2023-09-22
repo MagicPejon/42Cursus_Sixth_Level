@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 15:29:42 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/12 18:28:56 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:33:02 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ AForm::AForm(std::string name, int req_to_tick, int req_to_exe): _name(name), _t
 		throw AForm::GradeTooLowException();
 	if (req_to_tick < 1 || req_to_exe < 1)
 		throw AForm::GradeTooHighException();
-	std::cout << "Parameterized AForm Constructor Used" << std::endl;
+	std::cout << CYAN << "Parameterized AForm Constructor Used" << std::endl;
 	std::cout << "The Aform's name is " << name << std::endl;
 	std::cout << "and the grade required to sign it: " << req_to_tick << std::endl;
-	std::cout << "and the grade required to execute it: " << req_to_exe << std::endl;
+	std::cout << "and the grade required to execute it: " << req_to_exe << DEFAULT << std::endl;
 }
 
 AForm::AForm(AForm const & copy)

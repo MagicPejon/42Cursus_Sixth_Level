@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 18:15:19 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/08/21 17:59:51 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:29:25 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SCALARCONVERSION_H
 
 # include <iostream>
-# include <string>
-# include <cstddef>
+# include <stdlib.h>
+# include <limits>
 
 class ScalarConverter
 {
