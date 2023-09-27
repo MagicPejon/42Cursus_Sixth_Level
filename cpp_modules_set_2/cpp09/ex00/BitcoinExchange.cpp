@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:27:19 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/27 16:27:38 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:43:00 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ BitcoinExchange::BitcoinExchange(std::string infile)
 	}
 	catch (std::exception & e)
 	{
-		std::cerr << YELLOW << "Failed to get exchange rate because: " << DEFAULT << std::endl;
 		std::cerr << e.what() << std::endl;
 	}	
 }
@@ -264,11 +263,12 @@ BitcoinExchange::InvalidFile::InvalidFile(const char * infile)
 	append = GREEN + append + DEFAULT;
 	std::string msg = "Could not open or invalid file: " + append;
 	this->_msg = msg.c_str();
+	std::cerr << this->_msg;
 }
 
 const char * BitcoinExchange::InvalidFile::what() const throw()
 {
-	return (this->_msg);
+	return ("");
 }
 
 BitcoinExchange::InvalidFormat::InvalidFormat(const char * infile)
@@ -278,12 +278,13 @@ BitcoinExchange::InvalidFormat::InvalidFormat(const char * infile)
 	std::string msg = "File: \"" + append \
 	+ "\" contains an invalid format, which should be \"date | value\"";
 	this->_msg = msg.c_str();
+	std::cerr << this->_msg;
 	
 }
 
 const char * BitcoinExchange::InvalidFormat::what() const throw()
 {
-	return (this->_msg);
+	return ("");
 }
 
 BitcoinExchange::InvalidNumber::InvalidNumber(int ln, const char * infile)
@@ -297,7 +298,7 @@ BitcoinExchange::InvalidNumber::InvalidNumber(int ln, const char * infile)
 	std::string msg = "Error found in: \"" + append_s \
 	+ "\" file, specifically at line: " + append_n;
 	this->_msg = msg.c_str();
-	std::cout << this->_msg;
+	std::cerr << this->_msg;
 }
 
 const char * BitcoinExchange::InvalidNumber::what() const throw()
