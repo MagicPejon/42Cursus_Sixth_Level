@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:27:19 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/18 17:50:53 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:27:38 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	BitcoinExchange::readFile()
 	data.close();
 }
 
-std::string BitcoinExchange::closestDate(std::string date)
+std::string BitcoinExchange::closestDate(std::string date, int line_no, std::string infile)
 {
 	std::stringstream	read(date);
 	std::string			year, month, day;
@@ -101,6 +101,11 @@ std::string BitcoinExchange::closestDate(std::string date)
 		m = 12;
 		y--;
 	}
+	if (y <= 2008)
+	{
+		std::cerr << YELLOW << "DATE: date not in proper range: " << DEFAULT;
+		throw BitcoinExchange::InvalidNumber(line_no, infile.c_str());
+	}
 	std::string			updated_date;
 	std::stringstream	new_date;
 	new_date << y << '-' << std::setw(2) << std::setfill('0')\
@@ -109,19 +114,20 @@ std::string BitcoinExchange::closestDate(std::string date)
 	return (updated_date);
 }
 
-void BitcoinExchange::printConversion(std::string date, float con_val)
+void BitcoinExchange::printConversion(std::string date, float con_val, int line_no, std::string infile)
 {
 	if (this->_rate.find(date) != this->_rate.end())
 	{
 		float output = con_val * this->_rate[date];
-		std::cout << date << " => " << std::fixed << std::setprecision(2) << con_val; 
+		std::cout << date << " => " << std::fixed << std::setprecision(2) << con_val;
+		std::cout << " * " << this->_rate[date]; 
 		std::cout << " = " << output << std::endl;
 		return ;
 	}
 	else
 	{
-		date = this->closestDate(date);
-		this->printConversion(date, con_val);
+		date = this->closestDate(date, line_no, infile);
+		this->printConversion(date, con_val, line_no, infile);
 	}
 }
 
@@ -175,6 +181,11 @@ float BitcoinExchange::validateValue(std::string value)
 {
 	float rate = atof(value.c_str());
 	
+	if (value[0] == '.')
+	{
+		std::cerr << YELLOW << "VALUE: only decimal point found: " << DEFAULT;
+		return (-1);
+	}
 	if (rate < 0)
 	{
 		std::cerr << YELLOW << "VALUE: negative value: " << DEFAULT;
@@ -192,14 +203,19 @@ float BitcoinExchange::validateValue(std::string value)
 void BitcoinExchange::split(std::string line, std::string infile, int line_no)
 {
 	std::stringstream	str(line);
-	std::string			date, delimiter, value;
+	std::string			date, delimiter, value, extra;
 	float				con_val;
 
-	str >> date >> delimiter >> value;
+	str >> date >> delimiter >> value >> extra;
+	if (!extra.empty())
+	{
+		std::cerr << YELLOW << "VALUE: " << "invalid number (extra spaces etc.): " << DEFAULT;
+		throw BitcoinExchange::InvalidNumber(line_no, infile.c_str());
+	}
 	con_val = this->validateValue(value);
 	if (!this->validateDate(date) || !this->validateDelimiter(line) || con_val == -1)
 		throw BitcoinExchange::InvalidNumber(line_no, infile.c_str());
-	this->printConversion(date, con_val);
+	this->printConversion(date, con_val, line_no, infile);
 }
 
 bool BitcoinExchange::validateHeading(std::string line)

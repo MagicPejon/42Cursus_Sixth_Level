@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 17:27:30 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/18 17:31:25 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:44:06 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ class BitcoinExchange
 		float		validateValue(std::string value);
 		bool		validateDate(std::string date);
 		bool		validateDelimiter(std::string line);
-		void		printConversion(std::string date, float con_val);
-		std::string	closestDate(std::string date);
+		void		printConversion(std::string date, float con_val, int line_no, std::string infile);
+		std::string	closestDate(std::string date, int line_no, std::string infile);
 		
 };
 

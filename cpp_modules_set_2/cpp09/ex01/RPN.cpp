@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:13 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/10 13:51:30 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:39:03 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,12 @@ void RPN::_fillStack(std::string argv)
 		else if (isdigit(argv[i]))
 		{
 			this->_numbers.push(argv[i] - '0');
+			this->_count++;
+		}
+		else if (argv[i] == '-' && isdigit(argv[i + 1]))
+		{
+			i++;
+			this->_numbers.push((argv[i] - '0') * -1);
 			this->_count++;
 		}
 		else

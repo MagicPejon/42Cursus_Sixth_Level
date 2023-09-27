@@ -6,12 +6,14 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:07:14 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/21 18:45:25 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:25:49 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 #include <iomanip>
+#include <iterator>
+#include <vector>
 
 PmergeMe::PmergeMe()
 {
@@ -48,38 +50,68 @@ void PmergeMe::_print_arranged(T container, std::string type)
 	std::cout << std::endl;
 }
 
-template <typename T>
-void PmergeMe::_return(T &container, T &temp)
+void PmergeMe::_create_sequence(int size)
 {
-	size_t	pointer;
-	size_t	save;
+	std::vector<int>			jacobsthal;
+	int							pointer;
+
+	jacobsthal.push_back(0);
+	jacobsthal.push_back(1);
+	pointer = 1;
+	while (jacobsthal[pointer] - (jacobsthal[pointer - 1]) < size)
+	{
+		jacobsthal.push_back(jacobsthal[pointer] + (2 * jacobsthal[pointer - 1]));
+		pointer++;
+	}
+	pointer = 1;
+	this->_vec_sequence.push_back(1);
+	this->_deq_sequence.push_back(1);
+	jacobsthal.erase(jacobsthal.begin());
+	jacobsthal.erase(jacobsthal.begin());
+	int numbers = jacobsthal[pointer] - jacobsthal[pointer - 1];
+	int i = numbers + 1;
+	int reached = i;
+	jacobsthal.erase(jacobsthal.begin());
+	while (!jacobsthal.empty())
+	{
+		while (numbers--)
+		{
+			this->_vec_sequence.push_back(i);
+			this->_deq_sequence.push_back(i--);
+		}
+		numbers = jacobsthal[pointer] - jacobsthal[pointer - 1];
+		i = numbers + reached;
+		reached = i;
+		jacobsthal.erase(jacobsthal.begin());
+		if (jacobsthal.size() == 1)
+			break ;
+	}
+}
+
+template <typename T>
+void PmergeMe::_return(T &container, T &temp, T &sequence)
+{
+	size_t				pointer;
 
 	pointer = 0;
-	save = -1;
-	while(!temp.empty())
+	while(!sequence.empty())
 	{
-		// if (temp[0] > container[pointer] && container[pointer] != 0)
-		// 	save = pointer;
-		// pointer++;
-		// if ((container.begin() + pointer) == container.end())
-		// {
-		// 	save++;
-		// 	container.insert(container.begin() + save, temp[0]);
-		// 	temp.erase(temp.begin());
-		// 	save = -1;
-		// 	pointer = 0;
-		// }
-		if (temp[0] < container[pointer] && container[pointer] != 0)
+		if (*sequence.begin() > (int)temp.size())
 		{
-			container.insert(container.begin() + pointer, temp[0]);
-			temp.erase(temp.begin());
+			sequence.erase(sequence.begin());
+			continue ;
+		}
+		else if (temp[*sequence.begin() - 1] < container[pointer] && container[pointer] != 0)
+		{
+			container.insert(container.begin() + pointer, temp[*sequence.begin() - 1]);
+			sequence.erase(sequence.begin());
 			pointer = 0;
 			continue ;
 		}
 		else if (container.begin() + pointer + 1 == container.end())
 		{
-			container.insert(container.begin() + pointer + 1, temp[0]);
-			temp.erase(temp.begin());
+			container.insert(container.begin() + pointer + 1, temp[*sequence.begin() - 1]);
+			sequence.erase(sequence.begin());
 			pointer = 0;
 			continue ;
 		}
@@ -158,7 +190,7 @@ void PmergeMe::_sort_deque()
 	
 	temp = this->_transfer(this->_deq);
 	this->_rearrange(this->_deq, temp);
-	this->_return(this->_deq, temp);
+	this->_return(this->_deq, temp, this->_deq_sequence);
 }
 
 void PmergeMe::_sort_vector()
@@ -167,7 +199,7 @@ void PmergeMe::_sort_vector()
 	
 	temp = this->_transfer(this->_vec);
 	this->_rearrange(this->_vec, temp);
-	this->_return(this->_vec, temp);
+	this->_return(this->_vec, temp, this->_vec_sequence);
 }
 
 bool PmergeMe::_already_sorted()
@@ -193,6 +225,8 @@ void PmergeMe::_sort_containers()
 	
 	if (!(_already_sorted()))
 	{
+		_create_sequence(this->_vec.size());
+		
 		start = clock();
 		this->_sort_vector();
 		finish = clock();

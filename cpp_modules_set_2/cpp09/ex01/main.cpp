@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:34 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/18 17:55:13 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 15:14:09 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,19 @@ bool op_present(std::string expr)
 
 bool correct_notation(std::string expr)
 {
-	if (expr.find_first_not_of("0123456789/*-+ ") == std::string::npos)
-		return (true);
-	return (false);
+	if (expr.find_first_not_of("0123456789/*-+ ") != std::string::npos)
+		return (false);
+	int i = 0;
+	while(expr[i])
+	{
+		if (isdigit(expr[i]) && isdigit(expr[i + 1]))
+		{
+			std::cout << "Two digit number detected at: " << YELLOW << i << DEFAULT << std::endl;
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 int main(int ac, char **av)
