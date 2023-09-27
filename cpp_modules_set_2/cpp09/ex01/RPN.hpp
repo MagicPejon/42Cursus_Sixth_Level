@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:29 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/10 13:51:34 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:13:32 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,15 @@ class RPN
 			const char * what() const throw();
 		};
 
+		class Inusfficient : public std::exception
+		{
+			public:
+
+			const char * what() const throw();
+		};
+
 		void				_fillStack(std::string argv);
+		void				_check_argument(std::string argv);
 		void				_doOperation(void);
 
 	public:

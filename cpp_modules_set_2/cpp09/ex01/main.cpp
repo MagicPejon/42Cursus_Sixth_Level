@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:34 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/27 15:14:09 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 16:53:53 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int main(int ac, char **av)
 			 else
 			 {
 				std::cerr << "Arithmetic operators needed: " << std::endl;
-				std::cerr << GREEN << "+ - * /" << std::endl;
+				std::cerr << GREEN << "+ - * /" << DEFAULT << std::endl;
 			 }
 		}
 		else

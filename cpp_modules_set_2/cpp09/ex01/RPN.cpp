@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:13 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/27 13:39:03 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/27 17:18:42 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,27 @@ void RPN::_doOperation()
 		std::cout << " = " << CYAN << this->_numbers.top() << DEFAULT << std::endl;
 }
 
+void RPN::_check_argument(std::string argv)
+{
+	int num_count = 0;
+	int op_count = 0;
+
+	for(size_t i = 0; i < argv.size(); i++)
+	{
+		if (isdigit(argv[i]))
+			num_count++;
+		else if (argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/')
+			op_count++;
+	}
+	if (num_count - 1 != op_count)
+		throw RPN::Inusfficient();
+}
+
 void RPN::_fillStack(std::string argv)
 {
 	int size;
-	
+
+	this->_check_argument(argv);
 	size = argv.size();
 	for (int i = 0; i < size; i++)
 	{
@@ -126,4 +143,9 @@ RPN::RPN(std::string argv, int ac): _explain(false), _count(0)
 const char * RPN::DivideByZero::what() const throw()
 {
 	return ("Dividing by zero");
+}
+
+const char * RPN::Inusfficient::what() const throw()
+{
+	return ("Not enough numbers or operators");
 }
