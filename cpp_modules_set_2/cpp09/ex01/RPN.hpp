@@ -6,7 +6,7 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:29 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/27 17:13:32 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/10/01 14:48:43 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <exception>
 # include <iostream>
+# include <list>
 # include <stack>
 # include <string>
 # include <ctype.h>
@@ -30,11 +31,11 @@ class RPN
 {
 	private:
 		
-		std::string			_rpn;
-		std::stack<char>	_operations;
-		std::stack<int>		_numbers;
-		bool				_explain;
-		int 				_count;
+		std::string							_rpn;
+		std::stack<char, std::list<char> >	_operations;
+		std::stack<int, std::list<int> >	_numbers;
+		bool								_explain;
+		int 								_count;
 		
 		class DivideByZero : public std::exception
 		{

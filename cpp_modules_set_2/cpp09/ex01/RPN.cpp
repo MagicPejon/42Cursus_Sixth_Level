@@ -6,11 +6,12 @@
 /*   By: amalbrei <amalbrei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 17:42:13 by amalbrei          #+#    #+#             */
-/*   Updated: 2023/09/27 17:18:42 by amalbrei         ###   ########.fr       */
+/*   Updated: 2023/09/29 12:54:41 by amalbrei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+#include <_ctype.h>
 
 RPN::RPN()
 {
@@ -62,7 +63,11 @@ void RPN::_doOperation()
 			std::cout << DEFAULT;
 	}
 	if (operand2 == 0 && operation == '/')
+	{
+		if (this->_explain)
+			std::cerr << std::endl;
 		throw RPN::DivideByZero();
+	}
 	else if (operation == '+')
 		this->_numbers.push(operand1 + operand2);
 	else if (operation == '-')
@@ -84,7 +89,7 @@ void RPN::_check_argument(std::string argv)
 	{
 		if (isdigit(argv[i]))
 			num_count++;
-		else if (argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/')
+		else if (argv[i] == '+' || (argv[i] == '-' && !isdigit(argv[i + 1])) || argv[i] == '*' || argv[i] == '/')
 			op_count++;
 	}
 	if (num_count - 1 != op_count)
@@ -133,8 +138,6 @@ RPN::RPN(std::string argv, int ac): _explain(false), _count(0)
 	}
 	catch (const std::exception & e)
 	{
-		if (this->_explain)
-			std::cerr << std::endl;
 		std::cerr << e.what() << std::endl; 
 	}
 }
